@@ -1,0 +1,31 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: objectdetection-deployment
+spec: 
+  replicas: 1
+  selector: 
+    matchLabels: 
+      app: object-detection
+  template: 
+    metadata: 
+      labels: 
+        app: object-detection
+    spec: 
+      containers: 
+        - 
+          image: assignmentdocker
+          name: object-detection
+          ports: 
+            - 
+              containerPort: 5000
+          resources: 
+            limits: 
+              memory: "512Mi"
+              cpu: "0.5"
+            requests: 
+              memory: "512Mi"
+              cpu: "0.5"
+          imagePullPolicy: IfNotPresent
+
